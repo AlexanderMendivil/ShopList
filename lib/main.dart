@@ -2,8 +2,11 @@ import 'package:app_final/MainScreens/home_screen.dart';
 import 'package:app_final/Utils/assets_images.dart';
 import 'package:app_final/Utils/constants_app.dart';
 import 'package:app_final/Utils/text_app.dart';
+import 'package:app_final/Widgets/design_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:splashscreen/splashscreen.dart';
+
+import 'MainScreens/login/welcome_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -39,14 +42,20 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return SplashScreen(
-      seconds: ConstantAPP.TIME_SPLASH_SCREEN,
-      navigateAfterSeconds: const Home_screen(),
-      image: Asset_images.ImageLogo(),
-      backgroundColor: Colors.white,
-      photoSize: 100,
-      loadingText: const Text(Text_app.LOADING),
-      loaderColor: Theme.of(context).primaryColor,
+    return Center(
+      child: SplashScreen(
+        seconds: ConstantAPP.TIME_SPLASH_SCREEN,
+        navigateAfterSeconds: const Welcome_screen(),
+        image: Asset_images.ImageLogo(),
+        backgroundColor: Colors.white,
+        photoSize: 100,
+        loadingText: Text(
+          Text_app.LOADING,
+          style: Theme.of(context).textTheme.bodyText1,
+        ),
+        loaderColor: Theme.of(context).primaryColor,
+        gradientBackground: Design_assets.linearGradient(context),
+      ),
     );
   }
 }
